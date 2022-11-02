@@ -19,7 +19,12 @@ public class ApplicationContextConfiguration {
     }
 
     @Bean
-    public RouterFunction<ServerResponse> route(GreetingHandler greetingHandler) {
+    public RouterFunction<ServerResponse> greeting(GreetingHandler greetingHandler) {
         return RouterFunctions.route(GET("/hello").and(accept(MediaType.APPLICATION_JSON)), request -> greetingHandler.greeting());
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> longGreeting(GreetingHandler greetingHandler) {
+        return RouterFunctions.route(GET("/wait-for-hello").and(accept(MediaType.APPLICATION_JSON)), request -> greetingHandler.longGreeting());
     }
 }

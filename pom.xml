@@ -41,7 +41,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>ghcr.io/joranbergfeld/sample-reactive-http-service/${project.artifactId}:latest</name>
+                        <name>ghcr.io/joranbergfeld/sample-reactive-http-service/${project.artifactId}:final</name>
                         <publish>true</publish>
                     </image>
                     <docker>
