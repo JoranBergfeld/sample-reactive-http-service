@@ -26,7 +26,7 @@ jobs:
       - name: Setup maven
         uses: s4u/setup-maven-action@v1.5.0
         with:
-          java-version: 19
+          java-version: 17
 
       - name: Build and push app
         run: mvn -DskipTests spring-boot:build-image

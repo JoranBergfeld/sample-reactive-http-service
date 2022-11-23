@@ -14,7 +14,7 @@
     <name>http-reactive-http-service</name>
     <description>http-reactive-http-service</description>
     <properties>
-        <java.version>19</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
