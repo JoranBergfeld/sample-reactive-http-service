@@ -1,20 +1,20 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: my-java-springboot
+  name: sample-reactive-http-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: java-springboot-app
+      app: sample-reactive-http-app
   template:
     metadata:
       labels:
-        app: java-springboot-app
+        app: sample-reactive-http-app
     spec:
       containers:
-        - name: my-java-springboot
-          image: java-springboot-image:latest
+        - name: sample-reactive-http-app
+          image: sample-reactive-http-app:latest
           ports:
             - name: http
               containerPort: 8081
@@ -27,7 +27,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: my-java-springboot-svc
+  name: sample-reactive-http-service
 spec:
   ports:
     - name: http-8081
@@ -35,4 +35,18 @@ spec:
       protocol: TCP
       targetPort: 8081
   selector:
-    app: java-springboot-app
+    app: sample-reactive-http-app
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+spec:
+  to:
+    kind: Service
+    name: sample-reactive-http-service
+    weight: 100
+  port:
+    targetPort: http-8081
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Allow
+  wildcardPolicy: None
