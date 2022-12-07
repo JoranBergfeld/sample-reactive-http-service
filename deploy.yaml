@@ -1,19 +1,20 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: sample-http-app
+  name: my-java-springboot
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: sample-http-app
+      app: java-springboot-app
   template:
     metadata:
       labels:
-        app: sample-http-app
+        app: java-springboot-app
     spec:
       containers:
-        - name: sample-reactive-http-service
-          image:
+        - name: my-java-springboot
+          image: java-springboot-image:latest
           ports:
             - name: http
               containerPort: 8081
@@ -26,7 +27,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: sample-http-app-svc
+  name: my-java-springboot-svc
 spec:
   ports:
     - name: http-8081
@@ -34,4 +35,4 @@ spec:
       protocol: TCP
       targetPort: 8081
   selector:
-    app: sample-http-app
+    app: java-springboot-app
