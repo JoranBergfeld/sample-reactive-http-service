@@ -1,0 +1,37 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: sample-http-app
+spec:
+  selector:
+    matchLabels:
+      app: sample-http-app
+  template:
+    metadata:
+      labels:
+        app: sample-http-app
+    spec:
+      containers:
+        - name: sample-reactive-http-service
+          image:
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: sample-http-app-svc
+spec:
+  ports:
+    - name: http-8080
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: sample-http-app
