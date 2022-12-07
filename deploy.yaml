@@ -28,6 +28,10 @@ kind: Service
 apiVersion: v1
 metadata:
   name: sample-reactive-http-service
+  annotations:
+    prometheus.io/path: "/actuator/prometheus"
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
 spec:
   ports:
     - name: http-8081
