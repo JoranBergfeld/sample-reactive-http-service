@@ -2,8 +2,6 @@ schemaVersion: 2.2.0
 metadata:
   name: java-springboot
   version: 1.2.1
-  attributes:
-    alpha.dockerimage-port: 8080
   displayName: Spring Boot Sample HTTP Service
   description: Sample service to expose a few HTTP endpoints
   icon: https://spring.io/images/projects/spring-edf462fec682b9d48cf628eaf9e19521.svg
@@ -25,18 +23,13 @@ components:
         rootRequired: false
   - name: kubernetes-deploy
     attributes:
-      deployment/replicas: 1
+      deployment/replicas: 3
       deployment/cpuLimit: '100m'
       deployment/cpuRequest: 10m
-      deployment/memoryLimit: 300Mi
-      deployment/memoryRequest: 180Mi
-      deployment/container-port: 8080
+      deployment/memoryLimit: 500Mi
+      deployment/memoryRequest: 300Mi
     kubernetes:
       uri: deploy.yaml
-      endpoints:
-        - name: http-8080
-          targetPort: 8080
-          path: /
 commands:
   - id: build-image
     apply:
