@@ -30,8 +30,13 @@ components:
       deployment/cpuRequest: 10m
       deployment/memoryLimit: 500Mi
       deployment/memoryRequest: 300Mi
+      deployment/container-port: 8081
     kubernetes:
       uri: deploy.yaml
+      endpoints:
+        - name: http-8081
+          targetPort: 8081
+          path: /
 commands:
   - id: build-image
     apply:
