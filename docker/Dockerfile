@@ -6,5 +6,5 @@ COPY src src
 RUN mvn package -Dmaven.test.skip=true
 FROM openjdk:17-jdk
 COPY --from=0 /build/target/http-reactive-http-service-0.0.1-SNAPSHOT.jar /app/target/app.jar
-EXPOSE 8080
-ENTRYPOINT [ "java", "-jar", "/app/target/app.jar", "--server.port=8080" ]
+EXPOSE 8081
+ENTRYPOINT [ "java", "-jar", "/app/target/app.jar", "--server.port=8081" ]

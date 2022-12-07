@@ -1,7 +1,7 @@
 schemaVersion: 2.2.0
 metadata:
   attributes:
-    alpha.dockerimage-port: 8080
+    alpha.dockerimage-port: 8081
   name: java-springboot
   version: 1.2.1
   displayName: Spring Boot Sample HTTP Service

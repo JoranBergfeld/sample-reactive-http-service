@@ -16,7 +16,7 @@ spec:
           image:
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 8081
               protocol: TCP
           resources:
             limits:
@@ -29,9 +29,9 @@ metadata:
   name: sample-http-app-svc
 spec:
   ports:
-    - name: http-8080
-      port: 8080
+    - name: http-8081
+      port: 8081
       protocol: TCP
-      targetPort: 8080
+      targetPort: 8081
   selector:
     app: sample-http-app
